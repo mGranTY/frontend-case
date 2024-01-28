@@ -25,9 +25,8 @@ export default function LoginPage() {
                 localStorage.setItem('Session', JSON.stringify(data.session));
                 setTimeout(() => {
                     navigate("/dashboard")
-                }, 500)
+                }, 2000)
             }
-
         }
     })
 
