@@ -13,11 +13,21 @@ export default function LoginPage() {
     const loginMutation = useMutation({
         mutationFn: () => login(email, password),
         onError: () => {
+            localStorage.clear()
             setIsAuthError(true)
         },
         onSuccess: (data) => {
-            localStorage.setItem('Session', JSON.stringify(data.session));
-            navigate('/dashboard')
+            if(!data.success){
+                localStorage.clear()
+                setIsAuthError(true)
+            }
+            if(data.session){
+                localStorage.setItem('Session', JSON.stringify(data.session));
+                setTimeout(() => {
+                    navigate("/dashboard")
+                }, 500)
+            }
+
         }
     })
 

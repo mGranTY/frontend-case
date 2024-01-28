@@ -15,6 +15,11 @@ export async function login(email: string, password: string) {
             password: password
         })
     })
+
+    if(!data.ok){
+        new Error("something went wrong")
+    }
+
     return await data.json() as LoginResponse
 }
 

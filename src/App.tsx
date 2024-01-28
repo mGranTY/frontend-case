@@ -12,7 +12,7 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <Routes>
-                    {!session ? <Route path="*" element={<LoginPage />} /> : null}
+                    <Route path="/" element={<LoginPage />} />
                     {session ? <Route path="/dashboard" element={<Dashboard />} /> : null}
                 </Routes>
             </BrowserRouter>
