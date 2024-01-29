@@ -20,8 +20,9 @@ import {useMutation, useQueryClient} from "@tanstack/react-query";
 import deleteDocument from "@/components/actions/deleteDocument.ts";
 import uploadDocument from "@/components/actions/uploadDocument.ts";
 
-
-
+import pdfIcon from "@/assets/pdfx.png";
+import docxIcon from "@/assets/docx.png";
+import imageIcon from "@/assets/image.png";
 
 export default function Dashboard() {
 
@@ -157,7 +158,7 @@ export default function Dashboard() {
                                         alt="Document image"
                                         className="aspect-square rounded-md object-cover"
                                         height="64"
-                                        src={doc.mimetype === "application/pdf" ?  "src/assets/pdf-icon.png" : doc.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ? "src/assets/docx.png" : "src/assets/image.png"}
+                                        src={doc.mimetype === "application/pdf" ?  pdfIcon : doc.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ? docxIcon : imageIcon}
                                         width="64"
                                     />
                                 </TableCell>

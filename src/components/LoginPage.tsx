@@ -23,7 +23,7 @@ export default function LoginPage() {
             }
             if(data.success && data.session){
                 localStorage.setItem('Session', JSON.stringify(data.session));
-                navigate("/dashboard")
+                setTimeout(() => navigate("/dashboard"), 1000)
             }
         }
     })
