@@ -7,7 +7,8 @@ import Dashboard from "@/components/Dashboard.tsx";
 const queryClient = new QueryClient();
 
 export default function App() {
-    const session = useAuth()
+    const [session] = useAuth()
+    console.log(session)
     return (
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>

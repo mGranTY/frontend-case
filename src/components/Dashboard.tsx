@@ -12,7 +12,7 @@ import {
     DropdownMenu
 } from "@/components/ui/dropdown-menu"
 import {TableHead, TableRow, TableHeader, TableCell, TableBody, Table} from "@/components/ui/table"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {SVGProps, useEffect, useState} from "react";
 import { JSX } from "react/jsx-runtime";
 import useGetDocuments from "@/hooks/useGetDocuments.tsx";
@@ -30,6 +30,7 @@ export default function Dashboard() {
 
     const [searchParams, setSearchParams] = useState<string>('')
     const { data, isLoading, refetch } = useGetDocuments(`${searchParams}`)
+    const navigate = useNavigate()
     //Functions
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.files && event.target.files[0]){
@@ -42,7 +43,7 @@ export default function Dashboard() {
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
             refetch()
-        }, 1000)
+        }, 500)
 
         return () => clearTimeout(delayDebounceFn)
     }, [searchParams])
@@ -118,7 +119,10 @@ export default function Dashboard() {
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => {
+                            localStorage.clear()
+                            navigate('/')
+                        }}>Logout</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </header>

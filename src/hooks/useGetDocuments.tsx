@@ -5,6 +5,8 @@ import getDocuments from "@/components/actions/getDocuments.ts";
 export default function useGetDocuments(searchParam: string = ''){
     return useQuery({
         queryKey: ["Documentos"],
-        queryFn: () => getDocuments(searchParam)
+        queryFn: () => getDocuments(searchParam),
+        refetchOnWindowFocus: true,
+        refetchOnMount: true,
     })
 }

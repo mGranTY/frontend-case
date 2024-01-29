@@ -21,11 +21,9 @@ export default function LoginPage() {
                 localStorage.clear()
                 setIsAuthError(true)
             }
-            if(data.session){
+            if(data.success && data.session){
                 localStorage.setItem('Session', JSON.stringify(data.session));
-                setTimeout(() => {
-                    navigate("/dashboard")
-                }, 2000)
+                navigate("/dashboard")
             }
         }
     })
